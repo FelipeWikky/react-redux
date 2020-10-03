@@ -48,7 +48,7 @@ const NewWorker = () => {
             {
               workers.map(
                 (worker, key) => (
-                  <OverlayTrigger key='right' placement='right'
+                  <OverlayTrigger key={key} placement='right'
                     overlay={
                       <Tooltip id='right'>
                         Id do Funcionário {key + 1}: {worker.id}
