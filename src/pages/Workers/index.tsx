@@ -28,7 +28,7 @@ const Workers: React.FC = () => {
       {
         workers.map(
           (worker, key) => (
-            <div>
+            <div key={key}>
               <small>{worker.id}</small>
               <br/>
               <strong>{worker.name} - {worker.age}</strong>

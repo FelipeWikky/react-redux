@@ -1,12 +1,15 @@
-import { applyMiddleware, createStore, Middleware, Store } from "redux";
+import { applyMiddleware, createStore, Middleware, Store } from "redux"
 import createSagaMiddleware from 'redux-saga'
 
-import { WorkerState } from "./worker/types";
+import { WorkerState } from "./worker/types"
+import {AuthState} from './auth/types'
+
 import rootReducer from './rootReducer'
 import rootSaga from './rootSaga'
 
 export interface ApplicationState {
-  workerStore:WorkerState
+  workerStore:WorkerState,
+  authStore:AuthState,
 }
 
 const sagaMiddleware = createSagaMiddleware();
