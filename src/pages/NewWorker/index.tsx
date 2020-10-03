@@ -1,19 +1,12 @@
 import React, { useState } from 'react';
 import { Card, Form, Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import NavBar from '../../components/NavBar'
 
 import * as WorkerActions from '../../store/worker/actions'
 import { Worker } from '../../store/worker/types';
 import { ApplicationState } from '../../store'
-
-interface DispatchProps {
-  registerNewWorker: (worker: Worker) => void,
-}
-
-type Props = DispatchProps
 
 const NewWorker = () => {
   const dispatch = useDispatch();
