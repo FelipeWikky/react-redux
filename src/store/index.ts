@@ -1,6 +1,11 @@
 import { applyMiddleware, createStore, Middleware, Store } from "redux"
 import createSagaMiddleware from 'redux-saga'
+
 import {routerMiddleware } from 'connected-react-router'
+
+import { persistStore, persistReducer, PersistConfig } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+import {persistConfig} from '../utils/Constants'
 
 import history from '../routes/history'
 
@@ -15,6 +20,14 @@ export interface ApplicationState {
   authStore:AuthState,
 }
 
+const persistConf:PersistConfig<ApplicationState> = {
+  key: 'worker',
+  storage,
+  whitelist:['workerStore'],
+}
+
+
+
 const sagaMiddleware = createSagaMiddleware();
 
 const middlewares:Middleware[] = [
@@ -22,7 +35,11 @@ const middlewares:Middleware[] = [
   routerMiddleware(history),
 ]
 
-const store:Store<ApplicationState> = createStore(rootReducer, applyMiddleware(...middlewares));
+const persistedReducer = 
+  persistReducer(persistConfig('worker', storage, ['workerStore'] || persistConf), rootReducer);
+
+const store:Store<ApplicationState> = createStore(persistedReducer, applyMiddleware(...middlewares));
+export const persistor = persistStore(store);
 
 sagaMiddleware.run(rootSaga);
 
