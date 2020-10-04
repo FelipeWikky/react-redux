@@ -4,6 +4,8 @@ import createSagaMiddleware from 'redux-saga'
 import { WorkerState } from "./worker/types"
 import {AuthState} from './auth/types'
 
+import worker from './worker/reducer'
+import auth from './auth/reducer'
 import rootReducer from './rootReducer'
 import rootSaga from './rootSaga'
 
@@ -14,9 +16,11 @@ export interface ApplicationState {
 
 const sagaMiddleware = createSagaMiddleware();
 
-const middlewares:Middleware[] = [sagaMiddleware]
+const middlewares:Middleware[] = [
+  sagaMiddleware,
+]
 
-const store:Store<ApplicationState> = createStore(rootReducer, applyMiddleware(...middlewares));
+const store:Store<ApplicationState> = createStore( rootReducer, applyMiddleware(...middlewares));
 
 sagaMiddleware.run(rootSaga);
 
