@@ -3,6 +3,7 @@ export interface AuthState {
   readonly signing: boolean,
   readonly token: string | null,
   readonly error: boolean,
+  readonly logged: boolean,
 }
 
 export interface Auth {
@@ -16,6 +17,8 @@ export enum AuthTypes {
   SIGNIN_FAILURE = '@auth/SIGNIN_FAILURE',
 
   REQUEST_SIGNUP = '@auth/REQUEST_SIGNUP',
+  SIGNUP_SUCCESS = '@auth/SIGNUP_SUCCESS',
+  SIGNUP_FAILURE = '@auth/SIGNUP_FAILURE',
 
   REQUEST_SIGNOUT = '@auth/REQUEST_SIGNOUT',
 }

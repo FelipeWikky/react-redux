@@ -12,7 +12,7 @@ import { ApplicationState } from '../../store'
 const NavBarComponent: React.FC = () => {
 	const dispatch = useDispatch();
 	const auth: Auth = useSelector((store: ApplicationState) => store.authStore.auth);
-	const token = useSelector((store: ApplicationState) => store.authStore.token ? store.authStore.token : '');
+	const isLogged = useSelector((store: ApplicationState) => store.authStore.logged);
 
 	const history = useHistory();
 
@@ -42,7 +42,7 @@ const NavBarComponent: React.FC = () => {
 
 				<Form inline>
 					{
-						token ?
+						isLogged ?
 							<Nav className='mr-auto'>
 								<NavLink to='/'>
 									Olá, {auth.email}
@@ -54,7 +54,7 @@ const NavBarComponent: React.FC = () => {
 							</Nav>
 						:
 							<Nav className="mr-auto">
-								<NavLink to='/new-worker'  >
+								<NavLink to='/register'  >
 									Registrar
 								</NavLink>
 								&nbsp;&nbsp;&nbsp;

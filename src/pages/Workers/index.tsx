@@ -1,8 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import NavBar from '../../components/NavBar'
-
 import { ApplicationState } from '../../store'
 import * as WorkerActions from '../../store/worker/actions';
 import { Worker } from '../../store/worker/types';
@@ -23,8 +21,6 @@ const Workers: React.FC = () => {
   }
   return (
     <>
-      <NavBar />
-      
       {
         workers.map(
           (worker, key) => (

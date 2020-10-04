@@ -2,7 +2,6 @@ import React, {useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Constants from '../../utils/Constants'
-import NavBar from '../../components/NavBar'
 
 import * as WorkerActions from '../../store/worker/actions'
 
@@ -13,6 +12,7 @@ const Home: React.FC = () => {
 
 	const dispatch = useDispatch();
 	const requested = useSelector((store: ApplicationState) => store.workerStore.requested);
+	const token = useSelector((store:ApplicationState) => store.authStore.token);
 
 	useEffect(() => {
 		if (!requested)
@@ -21,7 +21,8 @@ const Home: React.FC = () => {
 
 	return (
 		<>
-			<NavBar />
+			Tela Inicial
+			{token}
 		</>
 	);
 }

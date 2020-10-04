@@ -1,11 +1,12 @@
 import { applyMiddleware, createStore, Middleware, Store } from "redux"
 import createSagaMiddleware from 'redux-saga'
+import {routerMiddleware } from 'connected-react-router'
+
+import history from '../routes/history'
 
 import { WorkerState } from "./worker/types"
 import {AuthState} from './auth/types'
 
-import worker from './worker/reducer'
-import auth from './auth/reducer'
 import rootReducer from './rootReducer'
 import rootSaga from './rootSaga'
 
@@ -18,9 +19,10 @@ const sagaMiddleware = createSagaMiddleware();
 
 const middlewares:Middleware[] = [
   sagaMiddleware,
+  routerMiddleware(history),
 ]
 
-const store:Store<ApplicationState> = createStore( rootReducer, applyMiddleware(...middlewares));
+const store:Store<ApplicationState> = createStore(rootReducer, applyMiddleware(...middlewares));
 
 sagaMiddleware.run(rootSaga);
 

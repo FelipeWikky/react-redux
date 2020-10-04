@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Card, Form, Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 
-import NavBar from '../../components/NavBar'
-
 import * as WorkerActions from '../../store/worker/actions'
 import { Worker } from '../../store/worker/types';
 import { ApplicationState } from '../../store'
@@ -26,7 +24,7 @@ const NewWorker = () => {
 
   return (
     <>
-      <NavBar/>
+
       <Card style={{ width: '38rem' }}>
         <Card.Body>
           <Form>
@@ -67,6 +65,7 @@ const NewWorker = () => {
           </ul>
         </Card.Body>
       </Card>
+      
     </>
   );
 }
